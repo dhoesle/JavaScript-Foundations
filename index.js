@@ -112,22 +112,24 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 function variableInterestRate (P, I, N){
 
     let principal = P;
-    // let interestRate = I;
+    let interestRate = I;
     let years = N;
 
-    let monthlyInterestRate = (interestRate / 12);
-    let periods = years*12;
+    
 
-    // let numerator = principal * (monthlyInterestRate * Math.pow((1+monthlyInterestRate),(periods)));
-    // let denominator = Math.pow((1+monthlyInterestRate),(periods)) - 1;
-    // let monthlyRate = Math.round(numerator / denominator);
-    let monthlyRate = Math.round(principal*((monthlyInterestRate * Math.pow(1+monthlyInterestRate,periods))/(Math.pow(1+monthlyInterestRate,periods)-1)));
+    
     for (let interestRate = (I - 0.02); interestRate < (I + 0.02); interestRate = interestRate + 0.005) {
-        
+        let monthlyInterestRate = (interestRate / 12);
+        let periods = years*12;
+        let numerator = principal * (monthlyInterestRate * Math.pow((1+monthlyInterestRate),(periods)));
+        let denominator = Math.pow((1+monthlyInterestRate),(periods)) - 1;
+        let monthlyRate = Math.round(numerator / denominator);
         console.log(name + ', with an interest rate of ' + interestRate.toFixed(3) + ', your monthly rate is $' + monthlyRate);
 
     }
 }
+        // let monthlyRate = Math.round(principal*((monthlyInterestRate * Math.pow(1+monthlyInterestRate,periods))/(Math.pow(1+monthlyInterestRate,periods)-1)));
+
 variableInterestRate(200000, 0.04, 30);
 // 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
@@ -148,4 +150,3 @@ variableInterestRate(200000, 0.04, 30);
 
 
 
-// principal((monthlyInterestRate * Math.pow(1+monthlyInterestRate,periods))/(Math.pow(1+monthlyInterestRate,periods)-1));
