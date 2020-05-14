@@ -111,26 +111,25 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 
 function variableInterestRate (P, I, N){
 
-    const principal = P;
-    // const interestRate = I;
-    const years = N;
+    let principal = P;
+    // let interestRate = I;
+    let years = N;
 
-    const monthlyInterestRate = (interestRate / 12);
-    const periods = years*12;
+    let monthlyInterestRate = (interestRate / 12);
+    let periods = years*12;
 
-    const numerator = principal * (monthlyInterestRate * Math.pow((1+monthlyInterestRate),(periods)));
-    const denominator = Math.pow((1+monthlyInterestRate),(periods)) - 1;
-    const monthlyRate = Math.round(numerator / denominator);
-    
+    // let numerator = principal * (monthlyInterestRate * Math.pow((1+monthlyInterestRate),(periods)));
+    // let denominator = Math.pow((1+monthlyInterestRate),(periods)) - 1;
+    // let monthlyRate = Math.round(numerator / denominator);
+    let monthlyRate = Math.round(principal*((monthlyInterestRate * Math.pow(1+monthlyInterestRate,periods))/(Math.pow(1+monthlyInterestRate,periods)-1)));
     for (let interestRate = (I - 0.02); interestRate < (I + 0.02); interestRate = interestRate + 0.005) {
         
         console.log(name + ', with an interest rate of ' + interestRate.toFixed(3) + ', your monthly rate is $' + monthlyRate);
 
     }
 }
-
 variableInterestRate(200000, 0.04, 30);
-
+// 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
 
 /* Attempt any of the stretch goals below once you have finished the work above. Remember as always, these may require additional research beyond what
@@ -146,3 +145,7 @@ variableInterestRate(200000, 0.04, 30);
 
 
 /* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!) */
+
+
+
+// principal((monthlyInterestRate * Math.pow(1+monthlyInterestRate,periods))/(Math.pow(1+monthlyInterestRate,periods)-1));
